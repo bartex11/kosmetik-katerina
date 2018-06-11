@@ -767,7 +767,7 @@ body.inner-page #fh5co-hero .fh5co-hero-wrap {
 @media screen and (max-width: 768px) {
   #fh5co-hero, .fh5co-hero-wrap {
     position: relative;
-    padding: 4em 0 3em 0;
+    padding: 4em 0 0 0;
     height: inherit !important;
   }
 }
