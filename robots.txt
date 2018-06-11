@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
-Sitemap: http://www.kosmetik-katerina.com/
+Sitemap: https://www.kosmetik-katerina.com/sitemap.xml
