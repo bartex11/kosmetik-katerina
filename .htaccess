@@ -1,1 +1,14 @@
 
+
+RewriteEngine on
+
+RewriteOptions inherit
+RewriteCond %{HTTP_HOST} ^kosmetik\-katerina\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.kosmetik\-katerina\.com$
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^index\.html$ "https\:\/\/kosmetik\-katerina\.com\/" [R=301,L]
+
+RewriteEngine On
+  RewriteCond %{HTTPS} !on
+  RewriteRule (.*) https://%{HTTP_HOST}%{kosmetik-katerina.com}
