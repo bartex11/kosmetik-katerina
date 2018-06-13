@@ -23,32 +23,135 @@
         </script>
 
         <!-- Google Webfont -->
-        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-        <!-- Themify Icons -->
-        <link rel="stylesheet" href="css/themify-icons.css">
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <!-- Owl Carousel -->
-        <link rel="stylesheet" href="css/owl.carousel.min.css">
-        <link rel="stylesheet" href="css/owl.theme.default.min.css">
-        <!-- Magnific Popup -->
-        <link rel="stylesheet" href="css/magnific-popup.css">
-        <!-- Superfish -->
-        <link rel="stylesheet" href="css/superfish.css">
-        <!-- Easy Responsive Tabs -->
-        <link rel="stylesheet" href="css/easy-responsive-tabs.css">
-        <!-- Animate.css -->
-        <link rel="stylesheet" href="css/animate.css">
-        <!-- Theme Style -->
-        <link rel="stylesheet" href="css/style.css">
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>	
+		<!-- Themify icons -->
+		<link rel="preload" href="css/themify-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Bootstrap -->
+		<link rel="preload" href="css/bootstrap.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Theme Style -->
+		<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Owl Carousel -->
+		<link rel="preload" href="css/owl.carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<link rel="preload" href="css/owl.theme.default.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Magnific Popup -->
+		<link rel="preload" href="css/magnific-popup.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Superfish -->
+		<link rel="preload" href="css/superfish.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Easy Responsive Tabs -->
+		<link rel="preload" href="css/easy-responsive-tabs.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Animate.css -->
+		<link rel="preload" href="css/animate.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Theme Style -->
+		<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-        <!-- Modernizr JS -->
-        <script src="js/modernizr-2.6.2.min.js"></script>
-        <!-- FOR IE9 below -->
-        <!--[if lt IE 9]>
-        <script src="js/respond.min.js"></script>
-        <![endif]-->
+		<noscript>
+			<link rel="stylesheet" href="css/themify-icons.css">
+			<link rel="stylesheet" href="css/bootstrap.css">
+			<link rel="stylesheet" href="css/owl.carousel.min.css">
+			<link rel="stylesheet" href="css/owl.theme.default.min.css">
+			<link rel="stylesheet" href="css/magnific-popup.css">
+			<link rel="stylesheet" href="css/superfish.css">
+			<link rel="stylesheet" href="css/easy-responsive-tabs.css">
+			<link rel="stylesheet" href="css/animate.css">
+			<link rel="stylesheet" href="css/style.css">
+		</noscript>
 
+		<script>
+			/*! preload */
+			(function( w ){
+				"use strict";
+				// rel=preload support test
+				if( !w.loadCSS ){
+					w.loadCSS = function(){};
+				}
+				// define on the loadCSS obj
+				var rp = loadCSS.relpreload = {};
+				// rel=preload feature support test
+				// runs once and returns a function for compat purposes
+				rp.support = (function(){
+					var ret;
+					try {
+						ret = w.document.createElement( "link" ).relList.supports( "preload" );
+					} catch (e) {
+						ret = false;
+					}
+					return function(){
+						return ret;
+					};
+				})();
+				// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+				// then change that media back to its intended value on load
+				rp.bindMediaToggle = function( link ){
+					// remember existing media attr for ultimate state, or default to 'all'
+					var finalMedia = link.media || "all";
+
+					function enableStylesheet(){
+						link.media = finalMedia;
+					}
+					// bind load handlers to enable media
+					if( link.addEventListener ){
+						link.addEventListener( "load", enableStylesheet );
+					} else if( link.attachEvent ){
+						link.attachEvent( "onload", enableStylesheet );
+					}
+					// Set rel and non-applicable media type to start an async request
+					// note: timeout allows this to happen async to let rendering continue in IE
+					setTimeout(function(){
+						link.rel = "stylesheet";
+						link.media = "only x";
+					});
+					// also enable media after 3 seconds,
+					// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+					setTimeout( enableStylesheet, 3000 );
+				};
+				// loop through link elements in DOM
+				rp.poly = function(){
+					// double check this to prevent external calls from running
+					if( rp.support() ){
+						return;
+					}
+					var links = w.document.getElementsByTagName( "link" );
+					for( var i = 0; i < links.length; i++ ){
+						var link = links[ i ];
+						// qualify links to those with rel=preload and as=style attrs
+						if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+							// prevent rerunning on link
+							link.setAttribute( "data-loadcss", true );
+							// bind listeners to toggle media back
+							rp.bindMediaToggle( link );
+						}
+					}
+				};
+				// if unsupported, run the polyfill
+				if( !rp.support() ){
+					// run once at least
+					rp.poly();
+					// rerun poly on an interval until onload
+					var run = w.setInterval( rp.poly, 500 );
+					if( w.addEventListener ){
+						w.addEventListener( "load", function(){
+							rp.poly();
+							w.clearInterval( run );
+						} );
+					} else if( w.attachEvent ){
+						w.attachEvent( "onload", function(){
+							rp.poly();
+							w.clearInterval( run );
+						} );
+					}
+				}
+				// commonjs
+				if( typeof exports !== "undefined" ){
+					exports.loadCSS = loadCSS;
+				}
+				else {
+					w.loadCSS = loadCSS;
+				}
+			}( typeof global !== "undefined" ? global : this ) );
+		</script>
+
+        
+        
 	</head>
 
 	<body>
@@ -57,11 +160,11 @@
 		<![endif]-->
         <header id="fh5co-header-section" role="header" class="">
             <div class="container">
-                <h1 id="fh5co-logo" class="pull-left">
+                <div id="fh5co-logo" class="pull-left">
                     <a href="index.html">
                         <img src="images/Logos/logo.png" class="logo" alt="Katerina Kosmetiksalon Logo">
                     </a>
-                </h1>
+                </div>
                 <nav id="fh5co-menu-wrap" role="navigation">
                     <ul class="sf-menu" id="fh5co-primary-menu">
                         <li><a href="index.html">Home</a></li>
@@ -678,31 +781,30 @@
                 <div class="container">
 			        <div class="row">
                         <div class="owl-carousel owl-carousel-fullwidth animate-box">
-	                        <div class="item"><a href="images/Kosmetik1.jpg" class="image-popup"><img src="images/Kosmetik1.jpg" alt="Reinigung"></a></div>
-	                        <div class="item"><a href="images/Kosmetik2.jpg" class="image-popup"><img src="images/Kosmetik2.jpg" alt="Massage"></a></div>
-	                        <div class="item"><a href="images/Kosmetik3.jpg" class="image-popup"><img src="images/Kosmetik3.jpg" alt="Ganzkörpermassage "></a></div>
-	                        <div class="item"><a href="images/Kosmetik4.jpg" class="image-popup"><img src="images/Kosmetik4.jpg" alt="Kavitation "></a></div>
-	                        <div class="item"><a href="images/Kosmetik5.jpg" class="image-popup"><img src="images/Kosmetik5.jpg" alt="Ultraschallwellen"></a></div>
-	                        <div class="item"><a href="images/Kosmetik6.jpg" class="image-popup"><img src="images/Kosmetik6.jpg" alt="Ultraschallbehandlung "></a></div> 
+	                        <div class="item"><a href="images/Gesicht/gesichtbedampfung.jpg" class="image-popup"><img src="images/Gesicht/gesichtbedampfung.jpg" alt="Reinigung"></a></div>
+	                        <div class="item"><a href="images/Body/massagen.jpg" class="image-popup"><img src="images/Body/massagen.jpg" alt="Massage"></a></div>
+	                        <div class="item"><a href="images/Body/ganzkoerpermassage.jpg" class="image-popup"><img src="images/Body/ganzkoerpermassage.jpg" alt="Ganzkörpermassage "></a></div>
+	                        <div class="item"><a href="images/Radiofrequenz/kavitation.jpg" class="image-popup"><img src="images/Radiofrequenz/kavitation.jpg" alt="Kavitation "></a></div>
+	                        <div class="item"><a href="images/Radiofrequenz/ultraschallwellen.jpg" class="image-popup"><img src="images/Radiofrequenz/ultraschallwellen.jpg" alt="Ultraschallwellen"></a></div>
+	                        <div class="item"><a href="images/Radiofrequenz/ultraschallbehandlung.jpg" class="image-popup"><img src="images/Radiofrequenz/ultraschallbehandlung.jpg" alt="Ultraschallbehandlung "></a></div> 
 	                    </div>
                         <div class="fh5co-spacer fh5co-spacer-lg"></div>
                         <h2 class="fh5co-uppercase-heading-sm text-center animate-box">SCHÖNHEIT ZITATE...</h2>
 	                    <div class="fh5co-spacer fh5co-spacer-xs"></div>
 	                    <div class="owl-carousel-fullwidth animate-box">
 	                        <div class="item">
-	                            <p class="text-center quote">&ldquo;Kosmetik ist die Kunst, die Geburtsurkunde zu dementieren. &rdquo; <cite class="author">&mdash; Olga Tschechowa</cite></p>
+	                            <p class="text-center quote">&ldquo; Die Männer beteuern immer, sie lieben die innere Schönheit der Frau - komischerweise gucken sie aber ganz woanders hin. &rdquo; <cite class="author">&mdash; Marlene Dietrich</cite></p>
 	                        </div>
 	                        <div class="item">
-	                            <p class="text-center quote">&ldquo;Schönheit ist überall ein gar willkommener Gast. &rdquo;<cite class="author">&mdash; Johann Wolfgang von Goethe</cite></p>
+	                            <p class="text-center quote">&ldquo; Meine Jugend und meine Schönheit schenkte ich den Männern. Jetzt widme ich meine Weisheit und meine Erfahrung den Tieren.&rdquo;<cite class="author">&mdash; Brigitte Bardot</cite></p>
 	                        </div>
 	                        <div class="item">
-	                            <p class="text-center quote">&ldquo;Ich liebe das Ritual des Schminkens. Es ist ein wunderbarer Ausdruck der Weiblichkeit. Und egal, was andere sagen, ich allein entscheide, wie ich aussehen will. &rdquo;<cite class="author">&mdash; Dita von Teese</cite></p>
+	                            <p class="text-center quote">&ldquo; 	
+                                    Schön ist eigentlich alles, was man mit Liebe betrachtet. Je mehr jemand die Welt liebt, desto schöner wird er sie finden.&rdquo;<cite class="author">&mdash; Christian Morgenstern</cite></p>
 	                        </div>
 	                    </div>
 	                </div>
-
 		            <div class="fh5co-spacer fh5co-spacer-md"></div>
-
 			</div>
 		</div>
 		
@@ -730,11 +832,12 @@
 						<p>&copy; 2016 Katerina Kosmetikstudio. All Rights Reserved.  <br>Designed by <a href="http://bartonization.com/"  >Bartonization</a> 
 						</div>
 					</div>
-					<div class="fh5co-spacer fh5co-spacer-md"></div>
 				</div>
 			</div>
 		</footer>
-			
+        
+        <!-- Modernizr JS -->
+        <script src="js/modernizr-2.6.2.min.js"></script>
 		<!-- jQuery -->
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<!-- jQuery Easing -->

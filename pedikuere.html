@@ -22,26 +22,133 @@
         </script>
 
   	    <!-- Google Webfont -->
-	    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-	    <!-- Themify Icons -->
-	    <link rel="stylesheet" href="css/themify-icons.css">
-	    <!-- Bootstrap -->
-	    <link rel="stylesheet" href="css/bootstrap.css">
-	    <!-- Owl Carousel -->
-	    <link rel="stylesheet" href="css/owl.carousel.min.css">
-	    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-	    <!-- Magnific Popup -->
-	    <link rel="stylesheet" href="css/magnific-popup.css">
-	    <!-- Superfish -->
-	    <link rel="stylesheet" href="css/superfish.css">
-	    <!-- Easy Responsive Tabs -->
-	    <link rel="stylesheet" href="css/easy-responsive-tabs.css">
-	    <!-- Animate.css -->
-	    <link rel="stylesheet" href="css/animate.css">
-	    <!-- Theme Style -->
-	    <link rel="stylesheet" href="css/style.css">
-	    <!-- Modernizr JS -->
-	    <script src="js/modernizr-2.6.2.min.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>	
+		<!-- Themify icons -->
+		<link rel="preload" href="css/themify-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Bootstrap -->
+		<link rel="preload" href="css/bootstrap.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Theme Style -->
+		<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Owl Carousel -->
+		<link rel="preload" href="css/owl.carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<link rel="preload" href="css/owl.theme.default.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Magnific Popup -->
+		<link rel="preload" href="css/magnific-popup.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Superfish -->
+		<link rel="preload" href="css/superfish.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Easy Responsive Tabs -->
+		<link rel="preload" href="css/easy-responsive-tabs.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Animate.css -->
+		<link rel="preload" href="css/animate.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Theme Style -->
+		<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+		<noscript>
+			<link rel="stylesheet" href="css/themify-icons.css">
+			<link rel="stylesheet" href="css/bootstrap.css">
+			<link rel="stylesheet" href="css/owl.carousel.min.css">
+			<link rel="stylesheet" href="css/owl.theme.default.min.css">
+			<link rel="stylesheet" href="css/magnific-popup.css">
+			<link rel="stylesheet" href="css/superfish.css">
+			<link rel="stylesheet" href="css/easy-responsive-tabs.css">
+			<link rel="stylesheet" href="css/animate.css">
+			<link rel="stylesheet" href="css/style.css">
+		</noscript>
+
+		<script>
+			/*! preload */
+			(function( w ){
+				"use strict";
+				// rel=preload support test
+				if( !w.loadCSS ){
+					w.loadCSS = function(){};
+				}
+				// define on the loadCSS obj
+				var rp = loadCSS.relpreload = {};
+				// rel=preload feature support test
+				// runs once and returns a function for compat purposes
+				rp.support = (function(){
+					var ret;
+					try {
+						ret = w.document.createElement( "link" ).relList.supports( "preload" );
+					} catch (e) {
+						ret = false;
+					}
+					return function(){
+						return ret;
+					};
+				})();
+				// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+				// then change that media back to its intended value on load
+				rp.bindMediaToggle = function( link ){
+					// remember existing media attr for ultimate state, or default to 'all'
+					var finalMedia = link.media || "all";
+
+					function enableStylesheet(){
+						link.media = finalMedia;
+					}
+					// bind load handlers to enable media
+					if( link.addEventListener ){
+						link.addEventListener( "load", enableStylesheet );
+					} else if( link.attachEvent ){
+						link.attachEvent( "onload", enableStylesheet );
+					}
+					// Set rel and non-applicable media type to start an async request
+					// note: timeout allows this to happen async to let rendering continue in IE
+					setTimeout(function(){
+						link.rel = "stylesheet";
+						link.media = "only x";
+					});
+					// also enable media after 3 seconds,
+					// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+					setTimeout( enableStylesheet, 3000 );
+				};
+				// loop through link elements in DOM
+				rp.poly = function(){
+					// double check this to prevent external calls from running
+					if( rp.support() ){
+						return;
+					}
+					var links = w.document.getElementsByTagName( "link" );
+					for( var i = 0; i < links.length; i++ ){
+						var link = links[ i ];
+						// qualify links to those with rel=preload and as=style attrs
+						if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+							// prevent rerunning on link
+							link.setAttribute( "data-loadcss", true );
+							// bind listeners to toggle media back
+							rp.bindMediaToggle( link );
+						}
+					}
+				};
+				// if unsupported, run the polyfill
+				if( !rp.support() ){
+					// run once at least
+					rp.poly();
+					// rerun poly on an interval until onload
+					var run = w.setInterval( rp.poly, 500 );
+					if( w.addEventListener ){
+						w.addEventListener( "load", function(){
+							rp.poly();
+							w.clearInterval( run );
+						} );
+					} else if( w.attachEvent ){
+						w.attachEvent( "onload", function(){
+							rp.poly();
+							w.clearInterval( run );
+						} );
+					}
+				}
+				// commonjs
+				if( typeof exports !== "undefined" ){
+					exports.loadCSS = loadCSS;
+				}
+				else {
+					w.loadCSS = loadCSS;
+				}
+			}( typeof global !== "undefined" ? global : this ) );
+		</script>
+	    
 	 
 	</head>
 
@@ -51,11 +158,11 @@
 		<![endif]-->
         <header id="fh5co-header-section" role="header" class="">
             <div class="container">
-                <h1 id="fh5co-logo" class="pull-left">
+                <div id="fh5co-logo" class="pull-left">
 					<a href="index.html">
 						<img src="images/Logos/logo.png" class="logo" alt="Katerina Kosmetiksalon Logo">
 					</a>
-				</h1>
+				</div>
                 <nav id="fh5co-menu-wrap" role="navigation">
                     <ul class="sf-menu" id="fh5co-primary-menu">
                         <li><a href="index.html">Home</a></li>
@@ -131,21 +238,21 @@
 	                <h2 class="fh5co-uppercase-heading-sm text-center animate-box">Pedikuere Düsseldorf</h2>
 	                <div class="fh5co-spacer fh5co-spacer-xs"></div>   
 	                <div class="owl-carousel owl-carousel-fullwidth animate-box">
-	                    <div class="item"><a href="images/Fusspflege/fusspflege.jpg" class="image-popup"><img src="images/Fusspflege/fusspflege.jpg" alt="Fusspflege" /></a></div>
-                        <div class="item"><a href="images/Fusspflege/fusspflege1.jpg" class="image-popup"><img src="images/Fusspflege/fusspflege1.jpg" alt="Fußpflege" /></a></div>
-                        <div class="item"><a href="images/Fusspflege/fusspflege2.jpg" class="image-popup"><img src="images/Fusspflege/fusspflege2.jpg" alt="Paraffinbad" /></a></div>
-                        <div class="item"><a href="images/Fusspflege/fusspflege3.jpg" class="image-popup"><img src="images/Fusspflege/fusspflege3.jpg" alt="Pedikuere" /></a></div>
-                        <div class="item"><a href="images/Fusspflege/fusspflege4.jpg" class="image-popup"><img src="images/Fusspflege/fusspflege4.jpg" alt="Medizinische Fußpflege" /></a></div>
-                        <div class="item"><a href="images/Fusspflege/fusspflege5.jpg" class="image-popup"><img src="images/Fusspflege/fusspflege5.jpg" alt="Schminken" /></a></div>
-                        <div class="item"><a href="images/Fusspflege/fusspflege6.jpg" class="image-popup"><img src="images/Fusspflege/fusspflege6.jpg" alt="Peeling" /></a></div>
-                        <div class="item"><a href="images/Fusspflege/fusspflege7.jpg" class="image-popup"><img src="images/Fusspflege/fusspflege7.jpg" alt="Problemhaut" /></a></div>
+	                    <div class="item"><a href="images/Fusspflege/nageldesign.jpg" class="image-popup"><img src="images/Fusspflege/nageldesign.jpg" alt="Nageldesign" /></a></div>
+                        <div class="item"><a href="images/Fusspflege/fusspflege.jpg" class="image-popup"><img src="images/Fusspflege/fusspflege.jpg" alt="Fußpflege" /></a></div>
+                        <div class="item"><a href="images/Fusspflege/paraffinbad.jpg" class="image-popup"><img src="images/Fusspflege/paraffinbad.jpg" alt="Paraffinbad" /></a></div>
+                        <div class="item"><a href="images/Fusspflege/pedikuere.jpg" class="image-popup"><img src="images/Fusspflege/pedikuere.jpg" alt="Pediküre" /></a></div>
+                        <div class="item"><a href="images/Fusspflege/medizinische-fusspflege.jpg" class="image-popup"><img src="images/Fusspflege/medizinische-fusspflege.jpg" alt="Medizinische Fußpflege" /></a></div>
+                        <div class="item"><a href="images/Fusspflege/french-pedikuere.jpg" class="image-popup"><img src="images/Fusspflege/french-pedikuere.jpg" alt="French Pediküre" /></a></div>
+                        <div class="item"><a href="images/Fusspflege/nagelhautentfernen.jpg" class="image-popup"><img src="images/Fusspflege/nagelhautentfernen.jpg" alt="Nagelhautentfernen" /></a></div>
+                        <div class="item"><a href="images/Fusspflege/nagelstudio.jpg" class="image-popup"><img src="images/Fusspflege/nagelstudio.jpg" alt="Nagelstudio" /></a></div>
                     </div>
 	                <div class="fh5co-spacer fh5co-spacer-md"></div>
 	                <h2 class="fh5co-uppercase-heading-sm text-center animate-box">SCHÖNHEIT ZITATE...</h2>
 	                <div class="fh5co-spacer fh5co-spacer-xs"></div>
 	                <div class="owl-carousel-fullwidth animate-box">
 	                    <div class="item">
-	                        <p class="text-center quote">&ldquo;Schönheit ist überall ein gar willkommener Gast. &rdquo; <cite class="author">&mdash; Johann Wolfgang von Goethe</cite></p>
+	                        <p class="text-center quote">&ldquo;Verständnis des Schönen und Begeisterung für das Schöne sind eins.&rdquo; <cite class="author">&mdash; Marie von Ebner-Eschenbach</cite></p>
 	                    </div>
 	                    <div class="item">
 	                        <p class="text-center quote">&ldquo;Ein Drittel der menschlichen Schönheit ist Natur, zwei Drittel sind Aufmachung. &rdquo;<cite class="author">&mdash; Fernöstliche Weisheit</cite></p>
@@ -181,12 +288,12 @@
 						<p>&copy; 2016 Katerina Kosmetikstudio. All Rights Reserved.<a href="Impressum.html" >Impressum </a>  <br>Designed by <a href="http://bartonization.com/" target="_blank" >Bartonization</a> 
 						</div>
 					</div>
-					<div class="fh5co-spacer fh5co-spacer-md"></div>
 				</div>
 			</div>
 		</footer>
 			
-			
+		<!-- Modernizr JS -->
+	    <script src="js/modernizr-2.6.2.min.js"></script>	
 		<!-- jQuery -->
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<!-- jQuery Easing -->
