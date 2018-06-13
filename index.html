@@ -7,7 +7,7 @@
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<title>Katerina Kosmetikstudio - Beautycenter, Kosmetiksalon, Beautystudio, Kosmetik, Gesichtkosmetik und Enthaarung in Düsseldorf Pempelfort</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta name="description" content="Kosmetiksalon Katerina Blücherstraße Düsseldorf Pempelfort - Beautycenter und Kosmetikstudio. Das Beautystudio bietet die perfekte Kosmetikpflege, Enthaarung, Gesichtkosmetik und Kosmetik für SIE und IHN." />
+		<meta name="description" content="Kosmetiksalon Katerina in Düsseldorf Pempelfort - Beautycenter und Kosmetikstudio. Das Beautystudio bietet die perfekte Kosmetikpflege, Enthaarung, Gesichtkosmetik und Kosmetik für SIE und IHN." />
 		<meta name="author" content="bartonization" />
 		<meta name="google-site-verification" content="4K0a6Y_HARJ7OehMKDQxeiBHI1ar7eiIKt5qBvOHCzk" />
 
@@ -15,42 +15,42 @@
 		<link rel="shortcut icon" href="favicon.ico">
 
 		<!-- Google Webfont -->
-		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-	
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>	
 		
-		<!-- Owl Carousel -->
-		<link rel="stylesheet" href="css/owl.carousel.min.css">
-		<link rel="stylesheet" href="css/owl.theme.default.min.css">
-		<!-- Magnific Popup -->
-		<link rel="stylesheet" href="css/magnific-popup.css">
-		<!-- Superfish -->
-		<link rel="stylesheet" href="css/superfish.css">
-		<!-- Easy Responsive Tabs -->
-		<link rel="stylesheet" href="css/easy-responsive-tabs.css">
-		<!-- Animate.css -->
-		<link rel="stylesheet" href="css/animate.css">
-		<!-- Theme Style -->
-		<link rel="stylesheet" href="css/style.css">
-
 		<!-- Themify icons -->
 		<link rel="preload" href="css/themify-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 		<!-- Bootstrap -->
 		<link rel="preload" href="css/bootstrap.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 		<!-- Theme Style -->
 		<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Owl Carousel -->
+		<link rel="preload" href="css/owl.carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<link rel="preload" href="css/owl.theme.default.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Magnific Popup -->
+		<link rel="preload" href="css/magnific-popup.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Superfish -->
+		<link rel="preload" href="css/superfish.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Easy Responsive Tabs -->
+		<link rel="preload" href="css/easy-responsive-tabs.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Animate.css -->
+		<link rel="preload" href="css/animate.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Theme Style -->
+		<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
 		<noscript>
 			<link rel="stylesheet" href="css/themify-icons.css">
 			<link rel="stylesheet" href="css/bootstrap.css">
+			<link rel="stylesheet" href="css/owl.carousel.min.css">
+			<link rel="stylesheet" href="css/owl.theme.default.min.css">
+			<link rel="stylesheet" href="css/magnific-popup.css">
+			<link rel="stylesheet" href="css/superfish.css">
+			<link rel="stylesheet" href="css/easy-responsive-tabs.css">
+			<link rel="stylesheet" href="css/animate.css">
+			<link rel="stylesheet" href="css/style.css">
 		</noscript>
 
 		<script>
-			/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
-			/* This file is meant as a standalone workflow for
-			- testing support for link[rel=preload]
-			- enabling async CSS loading in browsers that do not support rel=preload
-			- applying rel preload css once loaded, whether supported or not.
-			*/
+			/*! preload */
 			(function( w ){
 				"use strict";
 				// rel=preload support test
@@ -72,7 +72,6 @@
 						return ret;
 					};
 				})();
-
 				// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
 				// then change that media back to its intended value on load
 				rp.bindMediaToggle = function( link ){
@@ -82,14 +81,12 @@
 					function enableStylesheet(){
 						link.media = finalMedia;
 					}
-
 					// bind load handlers to enable media
 					if( link.addEventListener ){
 						link.addEventListener( "load", enableStylesheet );
 					} else if( link.attachEvent ){
 						link.attachEvent( "onload", enableStylesheet );
 					}
-
 					// Set rel and non-applicable media type to start an async request
 					// note: timeout allows this to happen async to let rendering continue in IE
 					setTimeout(function(){
@@ -100,7 +97,6 @@
 					// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
 					setTimeout( enableStylesheet, 3000 );
 				};
-
 				// loop through link elements in DOM
 				rp.poly = function(){
 					// double check this to prevent external calls from running
@@ -119,12 +115,10 @@
 						}
 					}
 				};
-
 				// if unsupported, run the polyfill
 				if( !rp.support() ){
 					// run once at least
 					rp.poly();
-
 					// rerun poly on an interval until onload
 					var run = w.setInterval( rp.poly, 500 );
 					if( w.addEventListener ){
@@ -139,8 +133,6 @@
 						} );
 					}
 				}
-
-
 				// commonjs
 				if( typeof exports !== "undefined" ){
 					exports.loadCSS = loadCSS;
@@ -150,9 +142,6 @@
 				}
 			}( typeof global !== "undefined" ? global : this ) );
 		</script>
-
-		<!-- Modernizr JS -->
-		<script async src="js/modernizr-2.6.2.min.js"></script>
 
 		<!-- Google Tag Manager -->
 		<script>
@@ -333,9 +322,8 @@
 							</p>
 						</div>
 						<div class="item">
-							<p class="text-center quote">&ldquo;Ich liebe das Ritual des Schminkens. Es ist ein wunderbarer Ausdruck der Weiblichkeit. Und egal, was andere
-								sagen, ich allein entscheide, wie ich aussehen will. &rdquo;
-								<cite class="author">&mdash; Dita von Teese</cite>
+							<p class="text-center quote">&ldquo;Es ist gar nicht leicht, so schön zu sein, wie man aussieht. &rdquo;
+								<cite class="author">&mdash; Sharon Stone</cite>
 							</p>
 						</div>
 					</div>
@@ -428,11 +416,12 @@
 								<a href="http://bartonization.com/" target="_blank">Bartonization</a>
 						</div>
 					</div>
-					<div class="fh5co-spacer fh5co-spacer-md"></div>
 				</div>
 			</div>
 		</footer>
-
+		
+		<!-- Modernizr JS -->
+		<script src="js/modernizr-2.6.2.min.js" async></script>
 		<!-- jQuery -->
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<!-- jQuery Easing -->

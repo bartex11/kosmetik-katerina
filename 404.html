@@ -14,40 +14,60 @@
 		<link rel="shortcut icon" href="favicon.ico">
 
 		<!-- Google Webfont -->
-		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-		<!-- Themify Icons -->
-		<link rel="stylesheet" href="css/themify-icons.css">
+		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>	
+		<!-- Themify icons -->
+		<link rel="preload" href="css/themify-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 		<!-- Bootstrap -->
-		<link rel="stylesheet" href="css/bootstrap.css">
-		<!-- Owl Carousel -->
-		<link rel="stylesheet" href="css/owl.carousel.min.css">
-		<link rel="stylesheet" href="css/owl.theme.default.min.css">
-		<!-- Magnific Popup -->
-		<link rel="stylesheet" href="css/magnific-popup.css">
-		<!-- Superfish -->
-		<link rel="stylesheet" href="css/superfish.css">
-		<!-- Easy Responsive Tabs -->
-		<link rel="stylesheet" href="css/easy-responsive-tabs.css">
-		<!-- Animate.css -->
-		<link rel="stylesheet" href="css/animate.css">
+		<link rel="preload" href="css/bootstrap.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 		<!-- Theme Style -->
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Owl Carousel -->
+		<link rel="preload" href="css/owl.carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<link rel="preload" href="css/owl.theme.default.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Magnific Popup -->
+		<link rel="preload" href="css/magnific-popup.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Superfish -->
+		<link rel="preload" href="css/superfish.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Easy Responsive Tabs -->
+		<link rel="preload" href="css/easy-responsive-tabs.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Animate.css -->
+		<link rel="preload" href="css/animate.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<!-- Theme Style -->
+		<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+		<noscript>
+			<link rel="stylesheet" href="css/themify-icons.css">
+			<link rel="stylesheet" href="css/bootstrap.css">
+			<link rel="stylesheet" href="css/owl.carousel.min.css">
+			<link rel="stylesheet" href="css/owl.theme.default.min.css">
+			<link rel="stylesheet" href="css/magnific-popup.css">
+			<link rel="stylesheet" href="css/superfish.css">
+			<link rel="stylesheet" href="css/easy-responsive-tabs.css">
+			<link rel="stylesheet" href="css/animate.css">
+			<link rel="stylesheet" href="css/style.css">
+		</noscript>
 
 		<!-- Modernizr JS -->
 		<script async src="js/modernizr-2.6.2.min.js"></script>
 		
+		<style>
+			.fh5co-hero1{
+				background-color: #8fc8db;
+				min-height: 100vh;
+				padding-top: 10em;
+				color:#4f4444
+			}
+
+		</style>
 	</head>
 
 	<body>
-		
-
 		<!--[if lte IE 9]>
 			<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 		<![endif]-->
 
 		<header id="fh5co-header-section" role="header">
 			<div class="container">
-			
 				<nav id="fh5co-menu-wrap" role="navigation">
 					<ul class="sf-menu" id="fh5co-primary-menu">
 						<li class="active">
@@ -101,32 +121,24 @@
 			</div>
 		</header>
 
-		<div id="fh5co-hero">
-		
+		<div class="fh5co-hero1">
 			<div class="container">
-				<div class="col-md-8 col-md-offset-2">
-					<div class="fh5co-hero-wrap" style="padding-top:8em">
-						<div class="fh5co-hero-intro">
-							<h1 class="to-animate hero-animate-1"><i class="fa fa-exclamation-triangle"></i> Seite nicht gefunden.</h1>
-							<div class="fh5co-spacer fh5co-spacer-xs"></div>
-							<h2 class="to-animate hero-animate-2">Ein Fehler ist aufgetreten!</h2>
-							<h2 class="to-animate hero-animate-2">Was bedeutet das.</h2>
-
-							<p class="to-animate hero-animate-3">Keine Sorge, Du hast nichts kaputt gemacht!<br>
-								
-								Ein Fehler mit der Nummer 404 bedeutet, dass die angeforderte Seite nicht gefunden wurde. Das heißt i.d.R., dass sie schlicht nicht existiert. Solch ein Fehler kann aber auch auftreten, wenn man sicht vertippt. Überprüfe daher deine Eingabe. Falls der Fehler weiterhin besteht, würden wir uns über eine kurze Mitteilung an info@kosmetik-katerina.com freuen, damit wir den Fehler schnellstmöglich beheben können. 
-								<br>Vielen Dank!</p>
-							
-							<p class="to-animate hero-animate-3">
-								<a href="contact.html#Adress" class="btn btn-outline btn-lg">Kontakt</a>
-							</p>
-						</div>
+				<div class="fh5co-hero-wrap" >
+					<div class="fh5co-hero-intro">
+						<h1 class="to-animate hero-animate-1"><i class="fa fa-exclamation-triangle"></i> Seite nicht gefunden. Ein Fehler ist aufgetreten!</h1>
+						<h2 class="to-animate hero-animate-2">Keine Sorge, Du hast nichts kaputt gemacht!.</h2>
+						<p class="to-animate hero-animate-3">
+							Ein Fehler mit der Nummer 404 bedeutet, dass die angeforderte Seite nicht gefunden wurde. Das heißt i.d.R., dass sie schlicht nicht existiert. Solch ein Fehler kann aber auch auftreten, wenn man sicht vertippt. Überprüfe daher deine Eingabe. Falls der Fehler weiterhin besteht, würden wir uns über eine kurze Mitteilung an info@kosmetik-katerina.com freuen, damit wir den Fehler schnellstmöglich beheben können. 
+							<br>Vielen Dank!
+						</p>
+						<p class="to-animate hero-animate-3">
+							<a href="contact.html#Adress" class="btn btn-outline btn-lg">Kontakt</a>
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
+		
 		<!-- jQuery -->
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<!-- jQuery Easing -->
