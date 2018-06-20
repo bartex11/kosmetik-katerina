@@ -94,7 +94,7 @@
 			fbq('track', 'PageView');
 		</script>
 		<noscript>
-			<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1750225938614585&ev=PageView&noscript=1"
+			<img class="lazyload" height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1750225938614585&ev=PageView&noscript=1"
 			/>
 		</noscript>
 		<!-- End Facebook Pixel Code -->
@@ -168,7 +168,7 @@
 			<div class="container">
 				<div id="fh5co-logo" class="pull-left">
 					<a href="index.html">
-						<img src="images/Logos/logo.png" class="logo" alt="Katerina Kosmetiksalon Logo">
+						<img class="lazyload" data-src="images/Logos/logo.png" class="logo" alt="Katerina Kosmetiksalon Logo">
 					</a>
 				</div>
 				<nav id="fh5co-menu-wrap" role="navigation">
@@ -272,37 +272,37 @@
 						
 						<div class="item">
 							<a href="images/Index/kosmetiksalon.jpg" class="image-popup">
-								<img src="images/Index/kosmetiksalon.jpg" alt="Kosmetiksalon">
+								<img class="lazyload" data-src="images/Index/kosmetiksalon.jpg" alt="Kosmetiksalon">
 							</a>
 						</div>
 						<div class="item">
 							<a href="images/Index/kosmetikstudio.jpg" class="image-popup">
-								<img src="images/Index/kosmetikstudio.jpg" alt="Kosmetikstudio">
+								<img class="lazyload" data-src="images/Index/kosmetikstudio.jpg" alt="Kosmetikstudio">
 							</a>
 						</div>
 						<div class="item">
 							<a href="images/Index/beautycenter.jpg" class="image-popup">
-								<img src="images/Index/beautycenter.jpg" alt="Beautycenter">
+								<img class="lazyload" data-src="images/Index/beautycenter.jpg" alt="Beautycenter">
 							</a>
 						</div>
 						<div class="item">
 							<a href="images/Index/kosmetik.jpg" class="image-popup">
-								<img src="images/Index/kosmetik.jpg" alt="Kosmetik ">
+								<img class="lazyload" data-src="images/Index/kosmetik.jpg" alt="Kosmetik ">
 							</a>
 						</div>
 						<div class="item">
 							<a href="images/Index/herrenkosmetik.jpg" class="image-popup">
-								<img src="images/Index/herrenkosmetik.jpg" alt="Herrenkosmetik">
+								<img class="lazyload" data-src="images/Index/herrenkosmetik.jpg" alt="Herrenkosmetik">
 							</a>
 						</div>
 						<div class="item">
 							<a href="images/Index/beautystudio.jpg" class="image-popup">
-								<img src="images/Index/beautystudio.jpg" alt="Beautystudio">
+								<img class="lazyload" data-src="images/Index/beautystudio.jpg" alt="Beautystudio">
 							</a>
 						</div>
 						<div class="item">
 							<a href="images/Index/fusspflege.jpg" class="image-popup">
-								<img src="images/Index/fusspflege.jpg" alt="Fußpflege">
+								<img class="lazyload" data-src="images/Index/fusspflege.jpg" alt="Fußpflege">
 							</a>
 						</div>
 					</div>
@@ -331,18 +331,18 @@
 						<h3 class="fh5co-footer-heading">Get in touch</h3>
 						<ul class="fh5co-social-icons">
 							<li>
-								<a href="https://plus.google.com/+Kosmetikkaterina" target="_blank">
+								<a href="https://plus.google.com/+Kosmetikkaterina" target="_blank" rel="noopener">
 									<i class="ti-google"></i>
 								</a>
 							</li>
 				
 							<li>
-								<a href="https://www.facebook.com/katerinakosmetik" target="_blank">
+								<a href="https://www.facebook.com/katerinakosmetik" target="_blank" rel="noopener">
 									<i class="ti-facebook"></i>
 								</a>
 							</li>
 							<li>
-								<a href="http://www.kosmetik-katerina.de/" target="_blank">
+								<a href="http://www.kosmetik-katerina.de/" target="_blank" rel="noopener">
 									<i class="ti-dribbble"></i>
 								</a>
 							</li>
@@ -362,6 +362,8 @@
 		
 		<!-- Modernizr JS -->
 		<script src="js/modernizr-2.6.2.min.js" async></script>
+		<!-- LazyLoad -->
+		<script src="js/lazysizes.min.js" async></script>
 		<!-- jQuery -->
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<!-- jQuery Easing -->
