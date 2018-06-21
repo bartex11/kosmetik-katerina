@@ -17,22 +17,22 @@
   	   	<!-- Google Webfont -->
 		<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>	
 		<!-- Themify icons -->
-		<link href="css/themify-icons.css" rel="stylesheet" type="text/css" >
+		<link href="css/themify-icons.css" rel="stylesheet" type="text/css">
 		<!-- Bootstrap -->
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" >
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 		<!-- Owl Carousel -->
-		<link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css" >
-		<link href="css/owl.theme.default.min.css" rel="stylesheet" type="text/css" >
+		<link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css">
+		<link href="css/owl.theme.default.min.css" rel="stylesheet" type="text/css">
 		<!-- Magnific Popup -->
-		<link href="css/magnific-popup.css" rel="stylesheet" type="text/css" >
+		<link href="css/magnific-popup.css" rel="stylesheet" type="text/css">
 		<!-- Superfish -->
-		<link href="css/superfish.css" rel="stylesheet" type="text/css" >
+		<link href="css/superfish.css" rel="stylesheet" type="text/css">
 		<!-- Easy Responsive Tabs -->
-		<link href="css/easy-responsive-tabs.css" rel="stylesheet" type="text/css" >
+		<link href="css/easy-responsive-tabs.css" rel="stylesheet" type="text/css">
 		<!-- Animate.css -->
-		<link href="css/animate.css" rel="stylesheet" type="text/css" >
+		<link href="css/animate.css" rel="stylesheet" type="text/css">
 		<!-- Theme Style -->
-		<link href="css/style.css" rel="stylesheet" type="text/css" >
+		<link href="css/style.css" rel="stylesheet" type="text/css">
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76581504-2"></script>
@@ -40,7 +40,6 @@
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-        
           gtag('config', 'UA-76581504-2');</script>
 	    
 	</head>
@@ -211,11 +210,31 @@
 	                <h2 class="fh5co-uppercase-heading-sm text-center animate-box">Massage</h2>
 	                <div class="fh5co-spacer fh5co-spacer-xs"></div>
 	                <div class="owl-carousel owl-carousel-fullwidth animate-box">
-	                    <div class="item"><a href="images/Body/koerperbehandlung.jpg" class="image-popup"><img src="images/Body/koerperbehandlung.jpg" alt="Koerperbehandlung" /></a></div>
-	                    <div class="item"><a href="images/Body/ganzkoerpermassage.jpg" class="image-popup"><img src="images/Body/ganzkoerpermassage.jpg" alt="Massagen" /></a></div>
-	                    <div class="item"><a href="images/Body/massagen.jpg" class="image-popup"><img src="images/Body/massagen.jpg" alt="Rückenmassage" /></a></div>
-	                    <div class="item"><a href="images/Body/wellnessbehandlung.jpg" class="image-popup"><img src="images/Body/wellnessbehandlung.jpg" alt="Bürstenmassage" /></a></div>
-	                    <div class="item"><a href="images/Body/nackenmassage.jpg" class="image-popup"><img src="images/Body/nackenmassage.jpg" alt="Nackenmassage" /></a></div>    
+	                    <div class="item">
+							<a href="images/Body/koerperbehandlung.jpg" class="image-popup">
+								<img class="lazyload" data-src="images/Body/koerperbehandlung.jpg" alt="Koerperbehandlung">
+							</a>
+						</div>
+	                    <div class="item">
+							<a href="images/Body/ganzkoerpermassage.jpg" class="image-popup">
+								<img class="lazyload" data-src="images/Body/ganzkoerpermassage.jpg" alt="Massagen">
+							</a>
+						</div>
+	                    <div class="item">
+							<a href="images/Body/massagen.jpg" class="image-popup">
+								<img class="lazyload" data-src="images/Body/massagen.jpg" alt="Rückenmassage">
+							</a>
+						</div>
+	                    <div class="item">
+							<a href="images/Body/wellnessbehandlung.jpg" class="image-popup">
+								<img src="images/Body/wellnessbehandlung.jpg" alt="Bürstenmassage">
+							</a>
+						</div>
+	                    <div class="item">
+							<a href="images/Body/nackenmassage.jpg" class="image-popup">
+								<img src="images/Body/nackenmassage.jpg" alt="Nackenmassage">
+							</a>
+						</div>    
 	                </div>
 	                <div class="fh5co-spacer fh5co-spacer-lg"></div>          
 	                <h2 class="fh5co-uppercase-heading-sm text-center animate-box">SCHÖNHEIT ZITATE...</h2>
@@ -259,7 +278,6 @@
 									<i class="ti-google"></i>
 								</a>
 							</li>
-				
 							<li>
 								<a href="https://www.facebook.com/katerinakosmetik" target="_blank" rel="noopener">
 									<i class="ti-facebook"></i>
@@ -285,7 +303,9 @@
 		</footer>
 			
 		<!-- Modernizr JS -->
-	    <script src="js/modernizr-2.6.2.min.js"></script>
+		<script src="js/modernizr-2.6.2.min.js" async></script>
+		<!-- LazyLoad -->
+		<script src="js/lazysizes.min.js" async></script>
 		<!-- jQuery -->
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<!-- jQuery Easing -->

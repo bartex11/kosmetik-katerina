@@ -16,22 +16,22 @@
 		<!-- Google Webfont -->
 		<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>	
 		<!-- Themify icons -->
-		<link href="css/themify-icons.css" rel="stylesheet" type="text/css" >
+		<link href="css/themify-icons.css" rel="stylesheet" type="text/css">
 		<!-- Bootstrap -->
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" >
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 		<!-- Owl Carousel -->
-		<link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css" >
-		<link href="css/owl.theme.default.min.css" rel="stylesheet" type="text/css" >
+		<link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css">
+		<link href="css/owl.theme.default.min.css" rel="stylesheet" type="text/css">
 		<!-- Magnific Popup -->
-		<link href="css/magnific-popup.css" rel="stylesheet" type="text/css" >
+		<link href="css/magnific-popup.css" rel="stylesheet" type="text/css">
 		<!-- Superfish -->
-		<link href="css/superfish.css" rel="stylesheet" type="text/css" >
+		<link href="css/superfish.css" rel="stylesheet" type="text/css">
 		<!-- Easy Responsive Tabs -->
-		<link href="css/easy-responsive-tabs.css" rel="stylesheet" type="text/css" >
+		<link href="css/easy-responsive-tabs.css" rel="stylesheet" type="text/css">
 		<!-- Animate.css -->
-		<link href="css/animate.css" rel="stylesheet" type="text/css" >
+		<link href="css/animate.css" rel="stylesheet" type="text/css">
 		<!-- Theme Style -->
-		<link href="css/style.css" rel="stylesheet" type="text/css" >
+		<link href="css/style.css" rel="stylesheet" type="text/css">
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76581504-2"></script>
@@ -39,7 +39,6 @@
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-        
           gtag('config', 'UA-76581504-2');</script>
    
 	</head>
@@ -235,12 +234,36 @@
 	                </div>
 	                <div class="fh5co-spacer fh5co-spacer-lg"></div>
                     <div class="owl-carousel owl-carousel-fullwidth animate-box">
-	                    <div class="item"><a href="images/Gesicht/hautanalyse.jpg" class="image-popup"><img src="images/Gesicht/hautanalyse.jpg" alt="Hautanalyse" /></a></div>
-	                    <div class="item"><a href="images/Gesicht/anti-aging.jpg" class="image-popup"><img src="images/Gesicht/anti-aging.jpg" alt="Anti-aging" /></a></div>
-	                    <div class="item"><a href="images/Gesicht/damenbart.jpg" class="image-popup"><img src="images/Gesicht/damenbart.jpg" alt="Zellulitebehandlung" /></a></div>
-	                    <div class="item"><a href="images/Gesicht/gesichtbedampfung.jpg" class="image-popup"><img src="images/Gesicht/gesichtbedampfung.jpg" alt="Augenbrauenkorrektur" /></a></div>
-	                    <div class="item"><a href="images/Gesicht/gesichtsmassage.jpg" class="image-popup"><img src="images/Gesicht/gesichtsmassage.jpg" alt="Hauttyp" /></a></div>
-	                    <div class="item"><a href="images/Gesicht/tonisierung.jpg" class="image-popup"><img src="images/Gesicht/tonisierung.jpg" alt="Männerkosmetik" /></a></div> 
+	                    <div class="item">
+							<a href="images/Gesicht/hautanalyse.jpg" class="image-popup">
+								<img class="lazyload" data-src="images/Gesicht/hautanalyse.jpg" alt="Hautanalyse">
+							</a>
+						</div>
+	                    <div class="item">
+							<a href="images/Gesicht/anti-aging.jpg" class="image-popup">
+								<img class="lazyload" data-src="images/Gesicht/anti-aging.jpg" alt="Anti-aging">
+							</a>
+						</div>
+	                    <div class="item">
+							<a href="images/Gesicht/damenbart.jpg" class="image-popup">
+								<img class="lazyload" data-src="images/Gesicht/damenbart.jpg" alt="Zellulitebehandlung">
+							</a>
+						<div>
+	                    <div class="item">
+							<a href="images/Gesicht/gesichtbedampfung.jpg" class="image-popup">
+								<img class="lazyload" data-src="images/Gesicht/gesichtbedampfung.jpg" alt="Augenbrauenkorrektur">
+							</a>
+						</div>
+	                    <div class="item">
+							<a href="images/Gesicht/gesichtsmassage.jpg" class="image-popup">
+								<img class="lazyload" data-src="images/Gesicht/gesichtsmassage.jpg" alt="Hauttyp">
+							</a>
+						</div>
+	                    <div class="item">
+							<a href="images/Gesicht/tonisierung.jpg" class="image-popup">
+								<img class="lazyload" data-src="images/Gesicht/tonisierung.jpg" alt="Männerkosmetik">
+							</a>
+						</div> 
 	                </div>
 		        </div>
 		    </div>
@@ -270,7 +293,6 @@
 									<i class="ti-google"></i>
 								</a>
 							</li>
-				
 							<li>
 								<a href="https://www.facebook.com/katerinakosmetik" target="_blank" rel="noopener">
 									<i class="ti-facebook"></i>
@@ -296,7 +318,9 @@
 		</footer>
 
 		<!-- Modernizr JS -->
-		<script src="js/modernizr-2.6.2.min.js"></script>
+		<script src="js/modernizr-2.6.2.min.js" async></script>
+		<!-- LazyLoad -->
+		<script src="js/lazysizes.min.js" async></script>
 		<!-- jQuery -->
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<!-- jQuery Easing -->
