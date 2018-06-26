@@ -1,1 +1,262 @@
-(function(e,s){"use strict";var o=function(){var o={bcClass:"sf-breadcrumb",menuClass:"sf-js-enabled",anchorClass:"sf-with-ul",menuArrowClass:"sf-arrows"},n=function(){var o=/iPhone|iPad|iPod/i.test(navigator.userAgent);return o&&e(s).load(function(){e("body").children().on("click",e.noop)}),o}(),t=function(){var e=document.documentElement.style;return"behavior"in e&&"fill"in e&&/iemobile/i.test(navigator.userAgent)}(),i=function(){return!!s.PointerEvent}(),r=function(e,s){var n=o.menuClass;s.cssArrows&&(n+=" "+o.menuArrowClass),e.toggleClass(n)},a=function(s,n){return s.find("li."+n.pathClass).slice(0,n.pathLevels).addClass(n.hoverClass+" "+o.bcClass).filter(function(){return e(this).children(n.popUpSelector).hide().show().length}).removeClass(n.pathClass)},l=function(e){e.children("a").toggleClass(o.anchorClass)},h=function(e){var s=e.css("ms-touch-action"),o=e.css("touch-action");o=o||s,o="pan-y"===o?"auto":"pan-y",e.css({"ms-touch-action":o,"touch-action":o})},u=function(s,o){var r="li:has("+o.popUpSelector+")";e.fn.hoverIntent&&!o.disableHI?s.hoverIntent(c,f,r):s.on("mouseenter.superfish",r,c).on("mouseleave.superfish",r,f);var a="MSPointerDown.superfish";i&&(a="pointerdown.superfish"),n||(a+=" touchend.superfish"),t&&(a+=" mousedown.superfish"),s.on("focusin.superfish","li",c).on("focusout.superfish","li",f).on(a,"a",o,p)},p=function(s){var o=e(this),n=o.siblings(s.data.popUpSelector);n.length>0&&n.is(":hidden")&&(o.one("click.superfish",!1),"MSPointerDown"===s.type||"pointerdown"===s.type?o.trigger("focus"):e.proxy(c,o.parent("li"))())},c=function(){var s=e(this),o=m(s);clearTimeout(o.sfTimer),s.siblings().superfish("hide").end().superfish("show")},f=function(){var s=e(this),o=m(s);n?e.proxy(d,s,o)():(clearTimeout(o.sfTimer),o.sfTimer=setTimeout(e.proxy(d,s,o),o.delay))},d=function(s){s.retainPath=e.inArray(this[0],s.$path)>-1,this.superfish("hide"),this.parents("."+s.hoverClass).length||(s.onIdle.call(v(this)),s.$path.length&&e.proxy(c,s.$path)())},v=function(e){return e.closest("."+o.menuClass)},m=function(e){return v(e).data("sf-options")};return{hide:function(s){if(this.length){var o=this,n=m(o);if(!n)return this;var t=n.retainPath===!0?n.$path:"",i=o.find("li."+n.hoverClass).add(this).not(t).removeClass(n.hoverClass).children(n.popUpSelector),r=n.speedOut;s&&(i.show(),r=0),n.retainPath=!1,n.onBeforeHide.call(i),i.stop(!0,!0).animate(n.animationOut,r,function(){var s=e(this);n.onHide.call(s)})}return this},show:function(){var e=m(this);if(!e)return this;var s=this.addClass(e.hoverClass),o=s.children(e.popUpSelector);return e.onBeforeShow.call(o),o.stop(!0,!0).animate(e.animation,e.speed,function(){e.onShow.call(o)}),this},destroy:function(){return this.each(function(){var s,n=e(this),t=n.data("sf-options");return!!t&&(s=n.find(t.popUpSelector).parent("li"),clearTimeout(t.sfTimer),r(n,t),l(s),h(n),n.off(".superfish").off(".hoverIntent"),s.children(t.popUpSelector).attr("style",function(e,s){return s.replace(/display[^;]+;?/g,"")}),t.$path.removeClass(t.hoverClass+" "+o.bcClass).addClass(t.pathClass),n.find("."+t.hoverClass).removeClass(t.hoverClass),t.onDestroy.call(n),void n.removeData("sf-options"))})},init:function(s){return this.each(function(){var n=e(this);if(n.data("sf-options"))return!1;var t=e.extend({},e.fn.superfish.defaults,s),i=n.find(t.popUpSelector).parent("li");t.$path=a(n,t),n.data("sf-options",t),r(n,t),l(i),h(n),u(n,t),i.not("."+o.bcClass).superfish("hide",!0),t.onInit.call(this)})}}}();e.fn.superfish=function(s,n){return o[s]?o[s].apply(this,Array.prototype.slice.call(arguments,1)):"object"!=typeof s&&s?e.error("Method "+s+" does not exist on jQuery.fn.superfish"):o.init.apply(this,arguments)},e.fn.superfish.defaults={popUpSelector:"ul,.sf-mega",hoverClass:"sfHover",pathClass:"overrideThisToUse",pathLevels:1,delay:800,animation:{opacity:"show"},animationOut:{opacity:"hide"},speed:"normal",speedOut:"fast",cssArrows:!0,disableHI:!1,onInit:e.noop,onBeforeShow:e.noop,onShow:e.noop,onBeforeHide:e.noop,onHide:e.noop,onIdle:e.noop,onDestroy:e.noop}})(jQuery,window);
+/*
+ * jQuery Superfish Menu Plugin
+ * Copyright (c) 2013 Joel Birch
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ *	http://www.opensource.org/licenses/mit-license.php
+ *	http://www.gnu.org/licenses/gpl.html
+ */
+
+(function ($, w) {
+	"use strict";
+
+	var methods = (function () {
+		// private properties and methods go here
+		var c = {
+				bcClass: 'sf-breadcrumb',
+				menuClass: 'sf-js-enabled',
+				anchorClass: 'sf-with-ul',
+				menuArrowClass: 'sf-arrows'
+			},
+			ios = (function () {
+				var ios = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+				if (ios) {
+					// iOS clicks only bubble as far as body children
+					$(w).load(function () {
+						$('body').children().on('click', $.noop);
+					});
+				}
+				return ios;
+			})(),
+			wp7 = (function () {
+				var style = document.documentElement.style;
+				return ('behavior' in style && 'fill' in style && /iemobile/i.test(navigator.userAgent));
+			})(),
+			unprefixedPointerEvents = (function () {
+				return (!!w.PointerEvent);
+			})(),
+			toggleMenuClasses = function ($menu, o) {
+				var classes = c.menuClass;
+				if (o.cssArrows) {
+					classes += ' ' + c.menuArrowClass;
+				}
+				$menu.toggleClass(classes);
+			},
+			setPathToCurrent = function ($menu, o) {
+				return $menu.find('li.' + o.pathClass).slice(0, o.pathLevels)
+					.addClass(o.hoverClass + ' ' + c.bcClass)
+						.filter(function () {
+							return ($(this).children(o.popUpSelector).hide().show().length);
+						}).removeClass(o.pathClass);
+			},
+			toggleAnchorClass = function ($li) {
+				$li.children('a').toggleClass(c.anchorClass);
+			},
+			toggleTouchAction = function ($menu) {
+				var msTouchAction = $menu.css('ms-touch-action');
+				var touchAction = $menu.css('touch-action');
+				touchAction = touchAction || msTouchAction;
+				touchAction = (touchAction === 'pan-y') ? 'auto' : 'pan-y';
+				$menu.css({
+					'ms-touch-action': touchAction,
+					'touch-action': touchAction
+				});
+			},
+			applyHandlers = function ($menu, o) {
+				var targets = 'li:has(' + o.popUpSelector + ')';
+				if ($.fn.hoverIntent && !o.disableHI) {
+					$menu.hoverIntent(over, out, targets);
+				}
+				else {
+					$menu
+						.on('mouseenter.superfish', targets, over)
+						.on('mouseleave.superfish', targets, out);
+				}
+				var touchevent = 'MSPointerDown.superfish';
+				if (unprefixedPointerEvents) {
+					touchevent = 'pointerdown.superfish';
+				}
+				if (!ios) {
+					touchevent += ' touchend.superfish';
+				}
+				if (wp7) {
+					touchevent += ' mousedown.superfish';
+				}
+				$menu
+					.on('focusin.superfish', 'li', over)
+					.on('focusout.superfish', 'li', out)
+					.on(touchevent, 'a', o, touchHandler);
+			},
+			touchHandler = function (e) {
+				var $this = $(this),
+					$ul = $this.siblings(e.data.popUpSelector);
+
+				if ($ul.length > 0 && $ul.is(':hidden')) {
+					$this.one('click.superfish', false);
+					if (e.type === 'MSPointerDown' || e.type === 'pointerdown') {
+						$this.trigger('focus');
+					} else {
+						$.proxy(over, $this.parent('li'))();
+					}
+				}
+			},
+			over = function () {
+				var $this = $(this),
+					o = getOptions($this);
+				clearTimeout(o.sfTimer);
+				$this.siblings().superfish('hide').end().superfish('show');
+			},
+			out = function () {
+				var $this = $(this),
+					o = getOptions($this);
+				if (ios) {
+					$.proxy(close, $this, o)();
+				}
+				else {
+					clearTimeout(o.sfTimer);
+					o.sfTimer = setTimeout($.proxy(close, $this, o), o.delay);
+				}
+			},
+			close = function (o) {
+				o.retainPath = ($.inArray(this[0], o.$path) > -1);
+				this.superfish('hide');
+
+				if (!this.parents('.' + o.hoverClass).length) {
+					o.onIdle.call(getMenu(this));
+					if (o.$path.length) {
+						$.proxy(over, o.$path)();
+					}
+				}
+			},
+			getMenu = function ($el) {
+				return $el.closest('.' + c.menuClass);
+			},
+			getOptions = function ($el) {
+				return getMenu($el).data('sf-options');
+			};
+
+		return {
+			// public methods
+			hide: function (instant) {
+				if (this.length) {
+					var $this = this,
+						o = getOptions($this);
+					if (!o) {
+						return this;
+					}
+					var not = (o.retainPath === true) ? o.$path : '',
+						$ul = $this.find('li.' + o.hoverClass).add(this).not(not).removeClass(o.hoverClass).children(o.popUpSelector),
+						speed = o.speedOut;
+
+					if (instant) {
+						$ul.show();
+						speed = 0;
+					}
+					o.retainPath = false;
+					o.onBeforeHide.call($ul);
+					$ul.stop(true, true).animate(o.animationOut, speed, function () {
+						var $this = $(this);
+						o.onHide.call($this);
+					});
+				}
+				return this;
+			},
+			show: function () {
+				var o = getOptions(this);
+				if (!o) {
+					return this;
+				}
+				var $this = this.addClass(o.hoverClass),
+					$ul = $this.children(o.popUpSelector);
+
+				o.onBeforeShow.call($ul);
+				$ul.stop(true, true).animate(o.animation, o.speed, function () {
+					o.onShow.call($ul);
+				});
+				return this;
+			},
+			destroy: function () {
+				return this.each(function () {
+					var $this = $(this),
+						o = $this.data('sf-options'),
+						$hasPopUp;
+					if (!o) {
+						return false;
+					}
+					$hasPopUp = $this.find(o.popUpSelector).parent('li');
+					clearTimeout(o.sfTimer);
+					toggleMenuClasses($this, o);
+					toggleAnchorClass($hasPopUp);
+					toggleTouchAction($this);
+					// remove event handlers
+					$this.off('.superfish').off('.hoverIntent');
+					// clear animation's inline display style
+					$hasPopUp.children(o.popUpSelector).attr('style', function (i, style) {
+						return style.replace(/display[^;]+;?/g, '');
+					});
+					// reset 'current' path classes
+					o.$path.removeClass(o.hoverClass + ' ' + c.bcClass).addClass(o.pathClass);
+					$this.find('.' + o.hoverClass).removeClass(o.hoverClass);
+					o.onDestroy.call($this);
+					$this.removeData('sf-options');
+				});
+			},
+			init: function (op) {
+				return this.each(function () {
+					var $this = $(this);
+					if ($this.data('sf-options')) {
+						return false;
+					}
+					var o = $.extend({}, $.fn.superfish.defaults, op),
+						$hasPopUp = $this.find(o.popUpSelector).parent('li');
+					o.$path = setPathToCurrent($this, o);
+
+					$this.data('sf-options', o);
+
+					toggleMenuClasses($this, o);
+					toggleAnchorClass($hasPopUp);
+					toggleTouchAction($this);
+					applyHandlers($this, o);
+
+					$hasPopUp.not('.' + c.bcClass).superfish('hide', true);
+
+					o.onInit.call(this);
+				});
+			}
+		};
+	})();
+
+	$.fn.superfish = function (method, args) {
+		if (methods[method]) {
+			return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+		}
+		else if (typeof method === 'object' || ! method) {
+			return methods.init.apply(this, arguments);
+		}
+		else {
+			return $.error('Method ' +  method + ' does not exist on jQuery.fn.superfish');
+		}
+	};
+
+	$.fn.superfish.defaults = {
+		popUpSelector: 'ul,.sf-mega', // within menu context
+		hoverClass: 'sfHover',
+		pathClass: 'overrideThisToUse',
+		pathLevels: 1,
+		delay: 800,
+		animation: {opacity: 'show'},
+		animationOut: {opacity: 'hide'},
+		speed: 'normal',
+		speedOut: 'fast',
+		cssArrows: true,
+		disableHI: false,
+		onInit: $.noop,
+		onBeforeShow: $.noop,
+		onShow: $.noop,
+		onBeforeHide: $.noop,
+		onHide: $.noop,
+		onIdle: $.noop,
+		onDestroy: $.noop
+	};
+
+})(jQuery, window);
