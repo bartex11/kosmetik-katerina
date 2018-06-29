@@ -1,7 +1,7 @@
 {
   "name": "kosmetik-katerina",
   "version": "1.0.0",
-  "description": "Kosmetiksalon Katerina",
+  "description": "Kosmetiksalon Katerina website",
   "main": "index.js",
   "dependencies": {
     "fg-loadcss": "^2.0.1"
