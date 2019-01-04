@@ -1,0 +1,6 @@
+D:\Sait\Katq\Final\EkaterinaFinalVersion\EkaterinaFinalVersion\bin\EkaterinaFinalVersion.dll.config
+D:\Sait\Katq\Final\EkaterinaFinalVersion\EkaterinaFinalVersion\bin\EkaterinaFinalVersion.dll
+D:\Sait\Katq\Final\EkaterinaFinalVersion\EkaterinaFinalVersion\bin\EkaterinaFinalVersion.pdb
+D:\Sait\Katq\Final\EkaterinaFinalVersion\EkaterinaFinalVersion\obj\Debug\EkaterinaFinalVersion.csprojResolveAssemblyReference.cache
+D:\Sait\Katq\Final\EkaterinaFinalVersion\EkaterinaFinalVersion\obj\Debug\EkaterinaFinalVersion.dll
+D:\Sait\Katq\Final\EkaterinaFinalVersion\EkaterinaFinalVersion\obj\Debug\EkaterinaFinalVersion.pdb

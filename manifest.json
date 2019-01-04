@@ -1,0 +1,17 @@
+{
+    "name": "Kosmetikstudio Katerina ",
+    "short_name": "KK",
+    "description": "Kosmetiksalon in Duesseldorf Pempelfort",
+    "lang": "de-DE",
+    "start_url": "https://kosmetik-katerina.com/index.html",
+    "display": "browser",
+    "theme_color": "#90d7ea",
+    "background_color": "#fff",
+    "orientation": "any",
+    "icons": [
+        {
+      "src": "/images/Logos/logo.png",
+      "type": "image/png",
+      "sizes": "250x62"
+    }]
+}

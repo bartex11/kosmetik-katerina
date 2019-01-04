@@ -1,0 +1,5 @@
+D:\Sait\Katq\Ekaterina-Slant\Ekaterina-Slant\bin\Ekaterina-Slant.dll
+D:\Sait\Katq\Ekaterina-Slant\Ekaterina-Slant\bin\Ekaterina-Slant.pdb
+D:\Sait\Katq\Ekaterina-Slant\Ekaterina-Slant\obj\Debug\Ekaterina-Slant.csprojResolveAssemblyReference.cache
+D:\Sait\Katq\Ekaterina-Slant\Ekaterina-Slant\obj\Debug\Ekaterina-Slant.dll
+D:\Sait\Katq\Ekaterina-Slant\Ekaterina-Slant\obj\Debug\Ekaterina-Slant.pdb
