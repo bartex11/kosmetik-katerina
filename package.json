@@ -1,0 +1,19 @@
+{
+  "name": "kosmetik-katerina",
+  "version": "1.0.0",
+  "description": "Kosmetiksalon und Beautycenter Katerina site",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bartex11/kosmetik-katerina.git"
+  },
+  "author": "Bartonization",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bartex11/kosmetik-katerina/issues"
+  },
+  "homepage": "https://github.com/bartex11/kosmetik-katerina#readme"
+}
