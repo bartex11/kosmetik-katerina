@@ -41,12 +41,27 @@
 				color:#4f4444
 			}
 		</style>
+		
+		<!-- Service Worker -->
+		<script>
+            if('serviceWorker' in navigator) {
+                navigator.serviceWorker
+                .register('/sw.js')
+                .then(function() { console.log("Service Worker Registered"); });
+            }
+		</script>
+		<!-- /Service Worker -->
 	</head>
 
 	<body>
 	
-		<header id="fh5co-header-section" role="header">
+		<header id="fh5co-header-section" role="header" class="">
 			<div class="container">
+				<div id="fh5co-logo" class="pull-left">
+					<a href="index.html">
+						<img src="images/Logos/logo.png" class="logo" alt="Katerina Kosmetiksalon Logo"/>
+					</a>
+				</div>
 				<nav id="fh5co-menu-wrap" role="navigation">
 					<ul class="sf-menu" id="fh5co-primary-menu">
 						<li class="active">
@@ -57,6 +72,9 @@
 							<ul class="fh5co-sub-menu">
 								<li>
 									<a href="gesichtskosmetik.html">Gesichtskosmetik</a>
+								</li>
+								<li>
+									<a href="onetec.html">Onetec®</a>
 								</li>
 								<li>
 									<a href="koerperbehandlungen.html">Körperbehandlungen</a>
@@ -89,6 +107,9 @@
 								</li>
 								<li>
 									<a href="studio.html">Das Studio</a>
+								</li>
+								<li>
+									<a href="manikuere-galerie.html">Maniküre</a>
 								</li>
 							</ul>
 						</li>
