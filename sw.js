@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 (function() {
   var nativeAddAll = Cache.prototype.addAll;
   var userAgent = navigator.userAgent.match(/(Firefox|Chrome)\/(\d+\.)/);
@@ -104,6 +105,26 @@ var urlsToCache = [
     '/preise.html',
     '/studio.html',
     '/ultraschalkavitation.html',
+=======
+
+var CACHE_NAME = 'katerina-kosmetik';
+var urlsToCache = [
+    '/index.html',
+    '/404.html',
+    '/gesichtskosmetik.html',
+    '/onetec.html',
+    '/koerperbehandlungen.html',
+    '/ultraschalkavitation.html',
+    '/enthaarungen.html',
+    '/manikuere.html',
+    '/pedikuere.html',
+    '/preise.html',
+    '/angebote.html',
+    '/studio.html',
+    '/manikuere-galerie.html',
+    '/contact.html'
+    
+>>>>>>> 96db5a0534ddb7e17876840930c94b3b8c2aec70
 ];
 
 
