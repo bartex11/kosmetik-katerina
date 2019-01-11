@@ -13,15 +13,11 @@ RewriteEngine On
   
 ErrorDocument 404 /404.html
 
-
 #=============================================================================#
 #          HEADERS, CACHING AND OPTIMIZATION
 #=============================================================================#
 
-
-
 #### HEADER CACHING ####
-
 <IfModule mod_expires.c>
     # Enable expirations
     ExpiresActive On 
@@ -41,7 +37,6 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 ### ALTERNATE EXPIRES CACHING ###
-
 ExpiresActive On
 ExpiresDefault A29030400
 ExpiresByType image/x-icon A29030400
@@ -97,8 +92,6 @@ Header set Cache-Control "max-age=604800, public"
 	mod_gzip_item_include mime ^application/postscript$
 </IfModule>
 
-
-
 ## EXPIRES CACHING ##
 <IfModule mod_expires.c>
     ExpiresActive On
@@ -113,18 +106,15 @@ Header set Cache-Control "max-age=604800, public"
     ExpiresByType image/x-icon "access plus 1 year"
     ExpiresDefault "access plus 2 days"
 </IfModule>
+
 ## EXPIRES CACHING ##
-
-
 <ifModule mod_headers.c>
-Header set Cache-Control "max-age=29030400, public"
-Header set Cache-Control "max-age=29030400, public"
-Header set Cache-Control "max-age=29030400, private"
-Header set Cache-Control "max-age=29030400, private, must-revalidate"
-
-Header unset ETag
-
-Header unset Last-Modified
+  Header set Cache-Control "max-age=29030400, public"
+  Header set Cache-Control "max-age=29030400, public"
+  Header set Cache-Control "max-age=29030400, private"
+  Header set Cache-Control "max-age=29030400, private, must-revalidate"
+  Header unset ETag
+  Header unset Last-Modified
 </ifModule>
 
 FileETag None
