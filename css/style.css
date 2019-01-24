@@ -856,15 +856,15 @@ textarea {
 }
 
 #fh5co-hero .fh5co-hero-wrap {
-    padding-top: 15em;
+    padding: 11em 0 4em 0;
     display: table;
-    height: 600px;
+    height: auto;
     width: 100%;
 }
 
 @media screen and (max-width: 768px) {
     #fh5co-hero .fh5co-hero-wrap {
-        padding-top: 4em;
+        padding: 8em 0 2em 0;
     }
 }
 

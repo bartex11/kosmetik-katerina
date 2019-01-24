@@ -26,7 +26,6 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#90d7ea">
     <link rel=”canonical” href=”https://kosmetik-katerina.com/index.html”/>
-
     <!-- Google Webfont -->
 
     <!-- Themify icons -->
@@ -108,7 +107,8 @@
                 for (var i = 0; i < links.length; i++) {
                     var link = links[i];
                     // qualify links to those with rel=preload and as=style attrs
-                    if (link.rel === "preload" && link.getAttribute("as") === "style" && !link.getAttribute("data-loadcss")) {
+                    if (link.rel === "preload" && link.getAttribute("as") === "style" && !link.getAttribute(
+                            "data-loadcss")) {
                         // prevent rerunning on link
                         link.setAttribute("data-loadcss", true);
                         // bind listeners to toggle media back
@@ -319,7 +319,8 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="fh5co-hero-wrap">
                     <div class="fh5co-hero-intro">
-                        <h1 class="to-animate hero-animate-1">Herzlich Willkommen im Kosmetikstudio Katerina in Düsseldorf.</h1>
+                        <h1 class="to-animate hero-animate-1">Herzlich Willkommen im Kosmetikstudio Katerina in Düsseldorf.
+                        </h1>
                         <div class="fh5co-spacer fh5co-spacer-xs"></div>
                         <h2 class="to-animate hero-animate-2">Kosmetikerin Ekaterina bietet die perfekte Kosmetik für SIE und IHN.</h2>
                         <h2 class="to-animate hero-animate-2">Wir freuen uns auf Ihren Besuch.</h2>
@@ -334,6 +335,24 @@
 
     <div id="fh5co-main">
         <div class="container">
+            <div class="row" id="fh5co-works" style="margin-bottom: 6rem">
+                <div class="col-md-12 text-center fh5co-section-heading work-box">
+                    <p class="fh5co-sub">Im Jahr 1982 habe ich meine dreijährige Ausbildung als medizinische Kosmetikerin erfolgreich absolviert. Seit 25 Jahren bin ich als Kosmetikerin tätig und habe langjährige Erfahrung in vielen Gesichts- und Körperbehandlungen gesammelt.
+                        Zu meinen Schwerpunkten gehören die Gesichtsreinigung, medizinische Gesichts-, Hals-, Schulter- und Dekolletemassagen, sowie verschiedene Anti-aging-Massagen. Aus dem Bereich der Ganzkörperbehandlung beherrsche ich herausragend
+                        die Anti-Cellulite-Behandlung und die manuelle Lymphdrainage.
+                    </p>
+                    <p class="fh5co-sub">Meine langjährige Erfahrung und die hochqualitativen Kosmetikmaterialien, die ich verantwortungsbewusst selektiere, helfen mir um fantastische Ergebnisse zu erreichen. Die Kosmetik ist ein Traumberuf für viele Frauen. Das ist ein wandelnder,
+                        dynamischer, moderner und fortentwickelter Beruf mit vielen Gesichtern. Die Kosmetik bedeutete mir viel - Leben, Arbeit, Hobby und unvergleichbarer Genuss. Meine Neugierde und mein Interesse an den Problemen und Bedürfnissen der
+                        Haut beschäftigen mich schon seit 30 Jahren.
+                    </p>
+                    <p class="fh5co-sub">Die Freude entstanden durch die Kommunikation mit unterschiedlichen Menschen und entsprechend mit vielen Hauttypen ist ein großartiges Privileg in diesem Beruf. Die Freude an der gut gemachten Arbeit erlebe ich mehrmals täglich, nach
+                        jedem freundlichen Lächeln und dank des gestiegenen Selbstbewusstseins der Kunden.
+                    </p>
+
+
+                </div>
+            </div>
+
             <div class="row">
                 <h2 class="fh5co-uppercase-heading-sm text-center animate-box">SCHÖNHEIT ZITATE...</h2>
                 <div class="fh5co-spacer fh5co-spacer-xs"></div>
