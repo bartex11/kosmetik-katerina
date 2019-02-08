@@ -2144,3 +2144,15 @@ a>img.fh5co-align-center {
 .new-info {
     text-align: left
 }
+
+@media screen and (max-width: 760px) {
+    .container-preise {
+        padding: 10px
+    }
+    .container-table {
+        padding: 0
+    }
+    .table-col {
+        padding: 0
+    }
+}
