@@ -197,7 +197,7 @@
         </div>
     </div>
 
-    <div id="fh5co-main">
+    <div id="fh5co-main" itemscope itemtype="http://schema.org/BeautySalon">
         <div class="container">
             <div class="row">
                 <h1 class="fh5co-uppercase-heading text-center animate-box fadeInUp animated">Kontakt Info</h1>
@@ -208,7 +208,7 @@
                             <i class="glyphicon glyphicon-time"></i>
                         </div>
                         <h3 class="heading text-center">Öffnungszeiten</h3>
-                        <table class="table table-hover">
+                        <table class="table table-hover" itemprop="openingHours" datetime="Tu, We, Th, Fr 10:00-18:30">
                             <tbody>
                                 <tr>
                                     <td>Montag</td>
@@ -241,13 +241,13 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-md-3 col-sm-12 fh5co-feature feature-box">
+                    <div class="col-md-3 col-sm-12 fh5co-feature feature-box" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                         <div class="fh5co-feature-icon">
                             <i class="glyphicon glyphicon-home"></i>
                         </div>
                         <h3 class="heading text-center">Adresse</h3>
-                        <p class="contact-info-data">Blücherstraße 29 </p>
-                        <p class="contact-info-data">40477 Düsseldorf</p>
+                        <p class="contact-info-data" itemprop="streetAddress">Blücherstraße 29 </p>
+                        <p class="contact-info-data" itemprop="addressLocality">40477 Düsseldorf</p>
                         <p class="contact-info-address">Wir sind direkt erreichbar mit Öffentlichen Verkehrsmitteln. Parkplätze sind im Hof vorhanden. Sie finden das Kosmetikstudio im Stadtplan und haben die Möglichkeit über <a href="https://www.google.com/maps/place/Bl%C3%BCcherstra%C3%9Fe+29,+40477+D%C3%BCsseldorf,+Germany/@51.2392856,6.7777299,16z/data=!4m5!3m4!1s0x47b8c98b77489e03:0xd302e407dc57558f!8m2!3d51.2391581!4d6.7831046?hl=en-US"
                                 target="_blank" rel="noopener">Google Maps</a> Ihre individuelle Online-Wegbeschreibung zu uns zu erstellen.</p>
                     </div>
@@ -256,14 +256,14 @@
                             <i class="glyphicon glyphicon-phone-alt"></i>
                         </div>
                         <h3 class="heading text-center">Telefon</h3>
-                        <p class="contact-info-data">0211 989 41 43</p>
-                        <p class="contact-info-data">01515 042 24 52</p>
+                        <p class="contact-info-data" itemprop="telephone">0211 989 41 43</p>
+                        <p class="contact-info-data" itemprop="telephone">01515 042 24 52</p>
                         <br /><br /><br />
 
                         <div class="fh5co-feature-icon">
                             <i class="glyphicon glyphicon-envelope"></i>
                         </div>
-                        <h3 class="heading text-center">E-mail</h3>
+                        <h3 class="heading text-center" itemprop="email">E-mail</h3>
                         <p class="contact-info-data">info@kosmetik-katerina.com</p>
                     </div>
                 </div>
@@ -333,6 +333,11 @@
                         <li>
                             <a href="https://www.yelp.de/biz/katerina-d%C3%BCsseldorf" target="_blank" rel="noopener" aria-label="Yelp Bewertungen">
                                 <i class="ti-ink-pen"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.golocal.de/duesseldorf/kosmetik/kosmetikstudio-katerina-MJiPl/" target="_blank" rel="noopener" aria-label="Golocal Bewertungen">
+                                <i class="ti-marker-alt"></i>
                             </a>
                         </li>
                     </ul>
