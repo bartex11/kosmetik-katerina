@@ -2155,4 +2155,12 @@ a>img.fh5co-align-center {
     .table-col {
         padding: 0
     }
+    .col-md-12,
+    .col-md-7,
+    .col-md-4 {
+        padding: 0!important
+    }
+    .resp-tabs-container {
+        border-top: 1px solid #ebebeb;
+    }
 }
